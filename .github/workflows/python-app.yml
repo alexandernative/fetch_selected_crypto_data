@@ -6,21 +6,21 @@ on:
   push: 
     branches: 
       - main 
-ECHO is on.
+
 jobs: 
   build: 
     runs-on: ubuntu-latest 
-ECHO is on.
+
     steps: 
       - uses: actions/checkout@v2 
       - name: Set up Python 
         uses: actions/setup-python@v2 
         with: 
           python-version: '3.x' 
-ECHO is on.
+
       - name: Install dependencies 
           python -m pip install --upgrade pip 
           pip install -r requirements.txt 
-ECHO is on.
+
       - name: Run script 
           python fetch_selected_crypto_data.py 
