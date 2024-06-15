@@ -1,26 +1,30 @@
-name: Run Selected Crypto Data Fetcher 
+name: Run Selected Crypto Data Fetcher
 
-on: 
-  schedule: 
-    - cron: '0 * * * *'  # Runs every hour 
-  push: 
-    branches: 
-      - main 
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs every hour
+  push:
+    branches:
+      - main
 
-jobs: 
-  build: 
-    runs-on: ubuntu-latest 
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-    steps: 
-      - uses: actions/checkout@v2 
-      - name: Set up Python 
-        uses: actions/setup-python@v2 
-        with: 
-          python-version: '3.x' 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Install dependencies 
-          python -m pip install --upgrade pip 
-          pip install -r requirements.txt 
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-      - name: Run script 
-          python fetch_selected_crypto_data.py 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run script
+        run: |
+          python fetch_selected_crypto_data.py
